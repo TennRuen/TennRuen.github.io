@@ -29,7 +29,7 @@ foreach ($file in $files) {
     # Create HTML Block
     $block = @"
                     <div class="gallery-item fade-in-up $delayClass">
-                        <img src="assets/images/$filename" alt="$title">
+                        <img src="assets/images/$filename" alt="$title" loading="lazy">
                         <div class="overlay">
                             <h3 class="overlay-title">$title</h3>
                         </div>
