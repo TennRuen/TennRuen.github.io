@@ -5,7 +5,7 @@ Add-Type -AssemblyName System.Drawing
 
 $imagesPath = "d:\Antigravity\portfolio\assets\images"
 $backupPath = "$imagesPath\_backup"
-$maxWidth = 2500
+$maxWidth = 800
 $quality = 85
 
 # Create backup directory
@@ -28,7 +28,13 @@ foreach ($file in $files) {
     try {
         $img = [System.Drawing.Image]::FromFile($file.FullName)
         
-        # 2. Check dimensions
+        # 2. Check dimensions - SKIP if already small enough (Prevents re-compression)
+        if ($img.Width -le $maxWidth) {
+            Write-Host " Skipped (Already optimized)." -ForegroundColor DarkGray
+            $img.Dispose()
+            continue
+        }
+
         $newWidth = $img.Width
         $newHeight = $img.Height
         
