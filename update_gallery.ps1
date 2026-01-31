@@ -7,8 +7,8 @@ $imagesPath = "$projectPath\assets\images"
 
 Write-Host "Syncing gallery with folder..." -ForegroundColor Cyan
 
-# 1. Get all image files (excluding hero image)
-$files = Get-ChildItem -Path $imagesPath -Include *.jpg, *.png, *.jpeg -Exclude "hero.png" -Recurse
+# 1. Get all image files (excluding hero,favicon,logo image)
+$files = Get-ChildItem -Path $imagesPath -Include *.jpg, *.png, *.jpeg -Exclude "hero.png", "favicon.png", "logo.png" -Recurse
 
 # 2. Generate HTML for all images
 $newHtmlArray = @()
@@ -51,7 +51,7 @@ if ($html -match "(?s)(?<=<!-- GALLERY_START -->).*(?=<!-- GALLERY_END -->)") {
     Set-Content -Path $indexPath -Value $html
     Write-Host "Gallery updated successfully!" -ForegroundColor Green
     Write-Host "Total images: $($files.Count)" -ForegroundColor Gray
-    Write-Host "(Removed hero.png from gallery view)" -ForegroundColor DarkGray
+    Write-Host "(Removed hero.png, favicon.png, logo.png from gallery view)" -ForegroundColor DarkGray
 }
 else {
     Write-Host "Error: Markers <!-- GALLERY_START --> or <!-- GALLERY_END --> not found." -ForegroundColor Red

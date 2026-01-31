@@ -56,9 +56,7 @@ body {
     transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 
-body:hover .cursor-outline {
-    /* slightly laggy follow handled in JS */
-}
+
 
 /* Typography Utility */
 .italic {
@@ -232,6 +230,8 @@ a {
 .about-text p {
     margin-bottom: 2rem;
 }
+
+
 
 /* Gallery */
 .gallery-grid {
@@ -411,4 +411,23 @@ a {
     .section-title {
         font-size: 3rem;
     }
+}
+
+/* Social Media Links */
+.social-links {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    color: white;
 }
